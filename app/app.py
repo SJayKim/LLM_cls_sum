@@ -30,8 +30,8 @@ class Message(BaseModel):
 class RequestBody(BaseModel):
     messages: list[Message]
 
-@app.post("/generate_keywords/")
-async def generate_keywords(request_body: RequestBody):
+@app.post("/summarize_document/")
+async def summarize_document(request_body: RequestBody):
     messages = [{"role": msg.role, "content": msg.content} for msg in request_body.messages]
     try:
         outputs = pipe(
@@ -56,6 +56,20 @@ async def classify_topic(request_body: RequestBody):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.post("/generate_response/")
+async def generate_response(request_body: RequestBody):
+    messages = [{"role": msg.role, "content": msg.content} for msg in request_body.messages]
+    try:
+        outputs = pipe(
+            messages,
+            max_new_tokens=256,
+        )
+        response_message = outputs[0]["generated_text"][-1]["content"]
+        return {"response": response_message}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+        
 # if __name__ == "__main__":
 #     import uvicorn
 #     uvicorn.run(app, host="0.0.0.0", port=8001)
