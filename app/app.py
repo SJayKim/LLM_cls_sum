@@ -2,7 +2,7 @@
 import os, sys
 ## 상위 경로 추가
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-from config.prompt.generate_prompt import generate_classify_prompt, generate_summarize_prompt
+from config.prompt.generate_prompt import generate_prompt
 
 from dotenv import load_dotenv
 import torch
@@ -41,41 +41,45 @@ class GenerateResponseRequest(BaseModel):
 
 @app.post("/summarize_document/")
 async def summarize_document(request_body: SummarizeRequest):
-    generated_prompt = generate_summarize_prompt(request_body.text, "summarize")
-    messages = [{"role": generated_prompt["role"], "content": generated_prompt["message"]}]
+    generated_prompt = generate_prompt(request_body.text, "summarize")
+    messages = [{"role": "system", "content": generated_prompt["role"]}, 
+                {"role": "user", "content": generated_prompt["message"]}]
     try:
         outputs = pipe(
             messages,
-            max_new_tokens=256,
+            max_new_tokens=12800,
         )
-        response_message = outputs[0]["generated_text"]
+        response_message = outputs[0]["generated_text"][-1]
         return {"response": response_message}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/classify_topic/")
 async def classify_topic(request_body: ClassifyRequest):
-    generated_prompt = generate_classify_prompt(request_body.text, "classify")
-    messages = [{"role": generated_prompt["role"], "content": generated_prompt["message"]}]
+    generated_prompt = generate_prompt(request_body.text, "classify")
+    messages = [{"role": "system", "content": generated_prompt["role"]}, 
+                {"role": "user", "content": generated_prompt["message"]}]
     try:
         outputs = pipe(
             messages,
-            max_new_tokens=256,
+            max_new_tokens=12800,
         )
-        response_message = outputs[0]["generated_text"]
+        response_message = outputs[0]["generated_text"][-1]
         return {"response": response_message}
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/generate_response/")
 async def generate_response(request_body: GenerateResponseRequest):
-    messages = [{"role": msg.role, "content": msg.content} for msg in request_body.messages]
+    messages = [{"role": "system", "content": msg.role} for msg in request_body.messages, 
+                {"role": "user", "content": msg.content} for msg in request_body.messages]
     try:
         outputs = pipe(
             messages,
-            max_new_tokens=256,
+            max_new_tokens=12800,
         )
-        response_message = outputs[0]["generated_text"]
+        response_message = outputs[0]["generated_text"][-1]
         return {"response": response_message}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
