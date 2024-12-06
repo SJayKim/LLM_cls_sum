@@ -1,21 +1,38 @@
 
+import json
+import os
+from pprint import pprint
 
+with open ("./prompt_configure.json", "r") as f:
+    prompt_configure = json.load(f)
 
-def generate_classify_prompt(input_text: str) -> str:
-    
-    role = "You are an expert of topic classification. Classify the given text into one of the following categories: Politics, Sports, Technology, Entertainment, Business, Health, Science, Education, or Other. Do not return any other description except for the categories and corresponding weights." 
-    
-    input_example1 = '''
+# pprint(prompt_configure)
+def generate_prompt(input_text: str, prompt_type :str = None) -> str:
+    if prompt_type not in ["classify", "summarize"]:
+        raise ValueError("Invalid prompt type. Choose between 'classify' and 'summarize'.")
+    current_prompt = prompt_configure[prompt_type]
+
+    role = current_prompt["role"]
+
+    main_prompt = f'''
+    {current_prompt["header"]}
     '''
-    output_example1 = '''
+
+    if current_prompt["examples"]:
+        example_prompt = f'''
+        '''
+        for idx, example in enumerate(current_prompt["examples"], start=1):
+            example_prompt += f'''
+    Example input{idx}: {example[0]}
+
+    Example output{idx}: {example[1]}
     '''
-    input_example2 = '''
-    '''
-    output_example2 = '''
-    '''
-    
-    main_prompt = '''
-    '''
+        main_prompt += example_prompt
+
+    main_prompt += f'''
+    Main input text: {input_text}
+    {current_prompt["footer"]}
+        '''    
 
     output_message = {
         'role': role,
@@ -24,19 +41,12 @@ def generate_classify_prompt(input_text: str) -> str:
 
     return output_message
 
-def generate_summarize_prompt(input_text: str) -> str:
-    role = "You are a summarizer. Summarize the given text. Do not"
-    
-    input_example1 = '''
-    The government unveiled policies to combat climate change, focusing on renewable energy, emission regulations, and electric vehicle incentives, aiming for carbon neutrality by 2050.
-    '''
-    output_example1 = '''
-    '''
-    input_example2 = '''
-    '''
-    output_example2 = '''
-    '''
+if __name__ == "__main__":
 
-    
+    ## Test the function
+    input_text = '''배관에서 영감을 받은 인공 심장
+    '''
+    prompt_type = "summarize"
 
-    return f"Summarize the following text: {input_text}"
+    result = generate_prompt(input_text, prompt_type)
+    print(result["message"])
