@@ -1,9 +1,11 @@
 
 import json
-import os
+import os, sys
+
+
 from pprint import pprint
 
-with open ("./prompt_configure.json", "r") as f:
+with open ("./config/prompt/prompt_configure.json", "r") as f:
     prompt_configure = json.load(f)
 
 # pprint(prompt_configure)
