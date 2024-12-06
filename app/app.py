@@ -72,8 +72,13 @@ async def classify_topic(request_body: ClassifyRequest):
 
 @app.post("/generate_response/")
 async def generate_response(request_body: GenerateResponseRequest):
-    messages = [{"role": "system", "content": msg.role} for msg in request_body.messages, 
-                {"role": "user", "content": msg.content} for msg in request_body.messages]
+    # messages = [{"role": "system", "content": msg.role} for msg in request_body.messages, 
+    #             {"role": "user", "content": msg.content} for msg in request_body.messages]
+
+    messages = [
+        {"role": "syste", "content": request_body.messages[0].role},
+        {"role": "user", "content": request_body.messages[0].content}    
+    ]
     try:
         outputs = pipe(
             messages,
