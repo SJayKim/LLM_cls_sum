@@ -49,7 +49,7 @@ async def summarize_document(request_body: SummarizeRequest):
             messages,
             max_new_tokens=12800,
         )
-        response_message = outputs[0]["generated_text"][-1]
+        response_message = outputs[0]["generated_text"][-1]["content"]
         return {"response": response_message}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -64,7 +64,7 @@ async def classify_topic(request_body: ClassifyRequest):
             messages,
             max_new_tokens=12800,
         )
-        response_message = outputs[0]["generated_text"][-1]
+        response_message = outputs[0]["generated_text"][-1]["content"]
         return {"response": response_message}
 
     except Exception as e:
@@ -84,7 +84,7 @@ async def generate_response(request_body: GenerateResponseRequest):
             messages,
             max_new_tokens=12800,
         )
-        response_message = outputs[0]["generated_text"][-1]
+        response_message = outputs[0]["generated_text"][-1]["content"]
         return {"response": response_message}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
