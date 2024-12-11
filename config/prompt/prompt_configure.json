@@ -1,0 +1,22 @@
+{
+    "classify": {
+        "role": "You are an expert of topic classification. Classify the given text into categories such as Politics, Sports, Technology, Entertainment, Business, Health, Science, Education, or Other. Also provide corresponding weights of categories. Return answer based on the following example.",
+        "header": "Classify the given text into following categories and corresponding weights. \nGiven categories: [Politics, Sports, Technology, Entertainment, Business, Health, Science, Education, Other]. \nReturn answer based on the following example.",
+        "examples":[
+            ["In an era where global challenges demand unified responses, governments are setting ambitious climate policies, while technological advancements, particularly in AI and green energy, are driving solutions. The recent global climate summit underscored the need for collaboration between nations to fund renewable energy transitions and support vulnerable economies. Simultaneously, AI-driven technologies are revolutionizing industries, automating processes, and creating new markets.The business world is also adapting to these changes, with startups at the forefront of green energy innovation. Investments in technologies like advanced solar panels and carbon capture have surged as companies aim to meet both consumer demands and regulatory pressures. The convergence of political frameworks, technological breakthroughs, and business strategies highlights the interconnected nature of modern global issues.","{\n'Politics': 0.40,\n'Technology': 0.35,\n'Business': 0.25\n}"]
+        ],
+        "footer": "Do not return any other description except for the categories and corresponding weights."
+        
+    },
+    "summarize": {
+        "role": "You are an expert of text summarization. Summarize the given text into a few sentences. Do not return any other description except for the summary.",
+        "header": "Summarize the given text into a few sentences.",
+        "examples":[
+            ["The government announced new policies to combat climate change. The plan includes a significant investment in renewable energy, stricter emission regulations for industries, and incentives for electric vehicle adoption. Environmental groups have praised the move, while some industries have expressed concerns about the potential economic impact. The government believes these measures will help the country meet its carbon neutrality goals by 2050.", "The government unveiled policies to combat climate change, focusing on renewable energy, emission regulations, and electric vehicle incentives, aiming for carbon neutrality by 2050."],
+            ["This paper explores the impact of artificial intelligence on medical diagnostics. By analyzing data from over 10,000 clinical cases, we demonstrate that AI systems can achieve diagnostic accuracy rates comparable to experienced physicians. However, the study also highlights limitations, such as biases in training data and challenges in interpreting AI decisions. Addressing these issues is critical for integrating AI effectively into healthcare.", "AI systems show diagnostic accuracy comparable to physicians but face challenges like data bias and interpretability, requiring further refinement for healthcare integration."]
+        ],
+        "footer": "Do not return any other description except for the summary."
+        
+    }
+
+}
