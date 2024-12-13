@@ -1,0 +1,67 @@
+{
+    "en":{
+        "Politics": [
+        "Politics", "Elections", "Government", "Legislation", "Diplomacy", "Political Parties", "Presidency", "Parliament", "Policies", "National Security", "Voting"
+        ],
+        "Economics": [
+        "Economy", "Stock Market", "Economic Conditions", "Finance", "Taxes", "Trade", "Investments", "Real Estate", "Budget", "Inflation", "Unemployment"
+        ],
+        "Social Issue": [
+        "Society", "Education", "Crime", "Welfare", "Health", "Labor", "Immigration", "Human Rights", "Environment", "Transportation", "Incidents"
+        ],
+        "Culture & Arts": [
+        "Culture", "Arts", "Music", "Movies", "Literature", "Exhibitions", "Festivals", "Visual Arts", "Theater", "Tradition", "Fashion"
+        ],
+        "Natural Science": [
+        "Science", "Technology", "Research", "Space", "Environmental Science", "Medicine", "Inventions", "Data", "Robotics", "Artificial Intelligence", "Energy"
+        ],
+        "International Affairs": [
+        "International Issues", "Diplomatic Policies", "Global Relations", "World Economy", "International Law", "Overseas Events", "Global Issues", "United Nations", "International Conferences", "Foreign Cultures", "Borders"
+        ],
+        "Sports": [
+        "Sports", "Olympics", "Soccer", "Baseball", "Basketball", "Tennis", "Golf", "Marathons", "Swimming", "Fitness", "Motorsports"
+        ],
+        "Technology & Internet": [
+        "Internet", "Software", "Hardware", "Smartphones", "Games", "Cybersecurity", "Apps", "Cloud Computing", "Big Data", "Virtual Reality"
+        ],
+        "Health & Wellness": [
+        "Nutrition", "Diseases", "Medicine", "Exercise", "Psychology", "Wellness", "Health Insurance", "Prevention", "Treatment", "Healthy Foods"
+        ],
+        "Travel": [
+        "Travel", "Travel Tips", "Hotels"
+        ]
+        },
+    "ko":{
+        "정치": [
+            "정치", "선거", "정부", "입법", "외교", "정당", "대통령직", "국회", "정책", "국가 안보", "투표"
+        ],
+        "경제": [
+            "경제", "주식 시장", "경제 상황", "금융", "세금", "무역", "투자", "부동산", "예산", "인플레이션", "실업"
+        ],
+        "사회 문제": [
+            "사회", "교육", "범죄", "복지", "건강", "노동", "이민", "인권", "환경", "교통", "사건사고"
+        ],
+        "문화 및 예술": [
+            "문화", "예술", "음악", "영화", "문학", "전시회", "축제", "시각 예술", "극장", "전통", "패션"
+        ],
+        "자연 과학": [
+            "과학", "기술", "연구", "우주", "환경 과학", "의학", "발명품", "데이터", "로봇 공학", "인공 지능", "에너지"
+        ],
+        "국제 문제": [
+            "국제 문제", "외교 정책", "글로벌 관계", "세계 경제", "국제법", "해외 이벤트", "글로벌 이슈", "유엔", "국제 컨퍼런스", "해외 문화", "국경"
+        ],
+        "스포츠": [
+            "스포츠", "올림픽", "축구", "야구", "농구", "테니스", "골프", "마라톤", "수영", "피트니스", "모터스포츠"
+        ],
+        "기술 및 인터넷": [
+            "인터넷", "소프트웨어", "하드웨어", "스마트폰", "게임", "사이버 보안", "앱", "클라우드 컴퓨팅", "빅 데이터", "가상 현실"
+        ],
+        "건강 및 웰빙": [
+            "영양", "질병", "의료", "운동", "심리학", "웰니스", "건강 보험", "예방", "치료", "건강 식품"
+        ],
+        "여행": [
+            "여행", "여행 팁", "호텔"
+        ]
+    }
+}
+    
