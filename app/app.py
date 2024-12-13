@@ -3,6 +3,7 @@ import os, sys
 ## 상위 경로 추가
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from config.prompt.generate_prompt import generate_prompt
+from source.utils import check_gpu_allocation
 
 from dotenv import load_dotenv
 import torch
@@ -16,13 +17,18 @@ api_token = os.getenv("HUGGINGFACE_API_TOKEN")
 
 app = FastAPI()
 
-model_id = "meta-llama/Llama-3.2-3B-Instruct"
+## 모델 parameter setting 및 모델 로드
+model_id = "allenai/Llama-3.1-Tulu-3-70B"
 pipe = pipeline(
     "text-generation",
     model=model_id,
     torch_dtype=torch.bfloat16,
-    device_map="auto"
+    device_map="auto",
+    # trust_remote_code = True
 )
+
+## 현재 GPU 스펙 및 allocation 현황 조회
+check_gpu_allocation()
 
 class SummarizeRequest(BaseModel):
     text: str
@@ -57,6 +63,7 @@ async def summarize_document(request_body: SummarizeRequest):
 @app.post("/classify_topic/")
 async def classify_topic(request_body: ClassifyRequest):
     generated_prompt = generate_prompt(request_body.text, "classify")
+    print(generated_prompt["message"])
     messages = [{"role": "system", "content": generated_prompt["role"]}, 
                 {"role": "user", "content": generated_prompt["message"]}]
     try:
