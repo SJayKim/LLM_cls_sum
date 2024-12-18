@@ -18,7 +18,7 @@ api_token = os.getenv("HUGGINGFACE_API_TOKEN")
 app = FastAPI()
 
 ## 모델 parameter setting 및 모델 로드
-model_id = "allenai/Llama-3.1-Tulu-3-70B"
+model_id = "meta-llama/Llama-3.2-3B-Instruct"
 pipe = pipeline(
     "text-generation",
     model=model_id,
@@ -47,6 +47,9 @@ class GenerateResponseRequest(BaseModel):
 
 @app.post("/summarize_document/")
 async def summarize_document(request_body: SummarizeRequest):
+
+    print(f'for debug: {request_body.text}')
+
     generated_prompt = generate_prompt(request_body.text, "summarize")
     messages = [{"role": "system", "content": generated_prompt["role"]}, 
                 {"role": "user", "content": generated_prompt["message"]}]
