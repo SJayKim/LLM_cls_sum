@@ -5,7 +5,7 @@ import os, sys
 
 from pprint import pprint
 
-with open ("./config/prompt/prompt_configure.json", "r") as f:
+with open ("C:/Users/cyon1/Desktop/LLM_cls_sum/config/prompt/prompt_configure.json", "r") as f:
     prompt_configure = json.load(f)
 
 # pprint(prompt_configure)
