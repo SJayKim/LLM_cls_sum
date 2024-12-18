@@ -5,7 +5,7 @@
         "examples":[
             ["In an era where global challenges demand unified responses, governments are setting ambitious climate policies, while technological advancements, particularly in AI and green energy, are driving solutions. The recent global climate summit underscored the need for collaboration between nations to fund renewable energy transitions and support vulnerable economies. Simultaneously, AI-driven technologies are revolutionizing industries, automating processes, and creating new markets.The business world is also adapting to these changes, with startups at the forefront of green energy innovation. Investments in technologies like advanced solar panels and carbon capture have surged as companies aim to meet both consumer demands and regulatory pressures. The convergence of political frameworks, technological breakthroughs, and business strategies highlights the interconnected nature of modern global issues.","{\n'Politics': 0.40,\n'Natural Science': 0.35,\n'Technology & Internet': 0.25\n}"]
         ],
-        "footer": "Do not return any other description except for the categories and corresponding weights."
+        "footer": "Do not return any other description except for the categories and corresponding weights.\nSum of weights should be 1.0."
         
     },
     "summarize": {
