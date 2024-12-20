@@ -125,6 +125,7 @@ cython_debug/
 
 #data files
 data/*
+*.csv
 
 #test notebooks
 test/*.ipynb
