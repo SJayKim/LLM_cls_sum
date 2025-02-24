@@ -18,7 +18,7 @@ api_token = os.getenv("HUGGINGFACE_API_TOKEN")
 app = FastAPI()
 
 ## 모델 parameter setting 및 모델 로드
-model_id = "meta-llama/Llama-3.2-3B-Instruct"
+model_id = "meta-llama/Meta-Llama-3.1-70B-Instruct"
 pipe = pipeline(
     "text-generation",
     model=model_id,
